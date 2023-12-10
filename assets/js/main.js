@@ -1,4 +1,4 @@
-/*===== MENU SHOW =====*/ 
+/*===== MENU SHOW =====*/
 const showMenu = (toggleId, navId) =>{
     const toggle = document.getElementById(toggleId),
     nav = document.getElementById(navId)
@@ -54,3 +54,29 @@ sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{});
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
 sr.reveal('.home__social-icon',{ interval: 200}); 
 sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
+
+
+//Email JS
+
+function sendMail() {
+    var params = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+    };
+
+    const serviceID = "service_x2l8sdp";
+    const templateID = "template_b3s5kop";
+
+    emailjs.send(serviceID, templateID, params)
+        .then(res=>{
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("message").value = "";
+            console.log(res);
+            alert("Muvaffaqiyatli jo'nnatildi !!")
+
+        })
+        .catch(err=>console.log(err));
+
+}
